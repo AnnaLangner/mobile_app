@@ -15,17 +15,6 @@ import AlertCard from './components/AlertCard';
 const Stack = createNativeStackNavigator();
 
 export default function App() {
-  const [fontsLoaded] = useFonts({
-    UnifrakturCook_700Bold,
-  });
-  if (!fontsLoaded) {
-    return (
-      <View style={styles.loadingContainer}>
-        <ActivityIndicator size="large" color="#1b8732" />
-        <Text style={styles.paragraph}>Ładowanie czcionki...</Text>
-      </View>
-    );
-  }
   return (
     <NavigationContainer>
       <Stack.Navigator
@@ -35,7 +24,7 @@ export default function App() {
           headerTitleStyle: {
             fontSize: 24,
             fontWeight: 'bold',
-            fontFamily: 'UnifrakturCook_700Bold',
+            fontFamily: 'serif',
             color: '#1b8732',
           },
           headerTitleAlign: 'center',
@@ -74,7 +63,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
     textAlign: 'center',
-    fontFamily: 'UnifrakturCook_700Bold',
+    fontFamily: 'serif',
     color: '#1b8732',
   },
   loadingContainer: {

@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: 'bold',
     textAlign: 'center',
-    fontFamily: 'UnifrakturCook_700Bold',
+    fontFamily: 'serif',
     color: '#1b8732',
   },
   logo: {
