@@ -1,16 +1,30 @@
-import { Text, View, StyleSheet, Image, Pressable } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-import AlertCard from '../components/AlertCard';
+import { Text, View, StyleSheet, Image, Pressable, Alert } from 'react-native';
+import * as Linking from 'expo-linking';
 
 export default function ButtonCard() {
-  const navigation = useNavigation();
+  const openWebsite = async () => {
+    const url = 'https://github.com/AnnaLangner/mobile_app';
+
+    try {
+      const supported = await Linking.canOpenURL(url);
+      if (supported) {
+        await Linking.openURL(url);
+      } else {
+        Alert.alert('Error', `Can not open the URL: ${url}`);
+      }
+    } catch (error) {
+      Alert.alert('Error', 'Something go wrong.');
+      console.error(error);
+    }
+  };
 
   return (
     <View style={styles.container}>
-      <Text style={styles.paragraph}>Click the button to see the alert</Text>
+      <Text style={styles.paragraph}>Click the button to open the website</Text>
       <Pressable
-        onPress={() => navigation.navigate(AlertCard)}
-        style={({ pressed }) => [{ opacity: pressed ? 0.6 : 1 }]}>
+        onPress={openWebsite}
+        style={({ pressed }) => [{ opacity: pressed ? 0.6 : 1 }]}
+      >
         <Image
           style={styles.logo}
           source={require('../assets/alert_button.png')}
